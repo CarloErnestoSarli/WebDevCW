@@ -18,7 +18,7 @@ namespace WebDev.Controllers
         // GET: Announcements
         public ActionResult Index()
         {
-            return View(db.Announcements.ToList());
+            return View();
         }
 
 
@@ -68,6 +68,27 @@ namespace WebDev.Controllers
             }
 
             return View(announcement);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AJAXCreate([Bind(Include = "Id,Title,Author,Content")] Announcement announcement)
+        {
+            if (ModelState.IsValid)
+            {
+                //get user identity 
+                string currentUserId = User.Identity.GetUserId();
+                ApplicationUser currentUser = db.Users.FirstOrDefault(
+                    x => x.Id == currentUserId);
+                announcement.User = currentUser;
+                announcement.DandT = DateTime.Now;
+
+                db.Announcements.Add(announcement);
+                db.SaveChanges();
+               
+            }
+
+            return PartialView("_AnnouncementsTable", db.Announcements.ToList());
         }
 
         // GET: Announcements/Edit/5
