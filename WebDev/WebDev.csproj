@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,9 +211,15 @@
     <Compile Include="Migrations\201612071325473_webDev2.Designer.cs">
       <DependentUpon>201612071325473_webDev2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612151025420_WebDev3.cs" />
+    <Compile Include="Migrations\201612151025420_WebDev3.Designer.cs">
+      <DependentUpon>201612151025420_WebDev3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Announcement.cs" />
+    <Compile Include="Models\AnnouncementView.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -287,6 +294,11 @@
     <Content Include="Views\Announcements\Edit.cshtml" />
     <Content Include="Views\Announcements\Index.cshtml" />
     <Content Include="Views\Announcements\_AnnouncementsTable.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612071325473_webDev2.resx">
       <DependentUpon>201612071325473_webDev2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612151025420_WebDev3.resx">
+      <DependentUpon>201612151025420_WebDev3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

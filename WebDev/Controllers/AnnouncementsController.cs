@@ -38,7 +38,9 @@ namespace WebDev.Controllers
             {
                 return HttpNotFound();
             }
-            return View(announcement);
+
+            AnnouncementView AV = populateAnnouncementViewModel(id);
+            return View(AV);
         }
 
         // GET: Announcements/Create
@@ -156,5 +158,12 @@ namespace WebDev.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //populate announcements with comments
+        public void populateAnnouncementViewModel(int id)
+        {
+
+        }
+
     }
 }
