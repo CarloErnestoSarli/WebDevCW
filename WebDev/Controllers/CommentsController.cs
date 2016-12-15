@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -56,6 +57,28 @@ namespace WebDev.Controllers
             }
 
             return View(comment);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AJAXCreate([Bind(Include = "CommentId,Author,Content")] Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                //get user identity 
+                string currentUserId = User.Identity.GetUserId();
+                ApplicationUser currentUser = db.Users.FirstOrDefault(
+                    x => x.Id == currentUserId);
+                comment.User = currentUser;
+                comment.DandT = DateTime.Now;
+                //comment.AnnouncementId = 
+
+                db.Comments.Add(comment);
+                db.SaveChanges();
+
+            }
+
+            return PartialView("_AnnouncementsTable", db.Announcements.ToList());
         }
 
         // GET: Comments/Edit/5
