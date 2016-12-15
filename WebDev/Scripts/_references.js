@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="../custom_scripts/buildcomments.js" />
 /// <reference path="../custom_scripts/buildtable.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="jquery.unobtrusive-ajax.min.js" />

@@ -18,7 +18,12 @@ namespace WebDev.Controllers
         // GET: Comments
         public ActionResult Index()
         {
-            return View(db.Comments.ToList());
+            return View();
+        }
+
+        public ActionResult BuildCommentTable()
+        {
+            return PartialView("_CommentsTable", db.Comments.ToList());
         }
 
         // GET: Comments/Details/5
@@ -78,7 +83,7 @@ namespace WebDev.Controllers
 
             }
 
-            return PartialView("_AnnouncementsTable", db.Announcements.ToList());
+            return PartialView("_CommentsTable", db.Comments.ToList());
         }
 
         // GET: Comments/Edit/5
