@@ -39,8 +39,9 @@ namespace WebDev.Controllers
                 return HttpNotFound();
             }
 
-            AnnouncementView AV = populateAnnouncementViewModel((int)id);
+            AnnouncementView AV = populateAnnouncementViewModel(id);
             return View(AV);
+            //return View(announcement);
         }
 
         // GET: Announcements/Create
@@ -160,9 +161,9 @@ namespace WebDev.Controllers
         }
 
         //populate announcements with comments
-        public AnnouncementView populateAnnouncementViewModel(int id)
+        public AnnouncementView populateAnnouncementViewModel(int? id)
         {
-            int currentAnnouncementId = id;
+            int currentAnnouncementId = (int)id;
             AnnouncementView AV = new AnnouncementView();
             AV.Comments = db.Comments.Where(x => x.AnnouncementId == currentAnnouncementId).ToList();
             return AV;

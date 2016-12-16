@@ -1,4 +1,4 @@
-﻿@model WebDev.Models.Announcement
+﻿@model WebDev.Models.AnnouncementView
 
 @{
     ViewBag.Title = "Details";
@@ -11,40 +11,58 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Announcement.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Announcement.Title)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DandT)
+            @Html.DisplayNameFor(model => model.Announcement.DandT)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DandT)
+            @Html.DisplayFor(model => model.Announcement.DandT)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Author)
+            @Html.DisplayNameFor(model => model.Announcement.Author)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Author)
+            @Html.DisplayFor(model => model.Announcement.Author)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Content)
+            @Html.DisplayNameFor(model => model.Announcement.Content)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Content)
+            @Html.DisplayFor(model => model.Announcement.Content)
         </dd>
 
     </dl>
 </div>
+
+@foreach (var item in Model.Comments)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DandT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CommentId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CommentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CommentId })
+        </td>
+    </tr>
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Announcement.Id }) |
+    @Html.ActionLink("Back to List", "Index")  |
+    @Html.ActionLink("Comment this Announcement", "Index", "Comments")
 </p>
